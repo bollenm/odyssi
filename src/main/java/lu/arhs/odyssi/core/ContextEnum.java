@@ -6,5 +6,6 @@ package lu.arhs.odyssi.core;
 public enum ContextEnum {
 
     SUBJECT,
-    POSITION
+    LOCATION,
+    TEMPORAL
 }
