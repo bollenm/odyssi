@@ -9,6 +9,11 @@ public class SemanticQuery {
 
     private Collection<ContextualKeyword> contextualKeywords;
 
+    public Collection<ContextualKeyword> getContextualKeywords() {
+        return contextualKeywords;
+    }
 
-
+    public void setContextualKeywords(final Collection<ContextualKeyword> contextualKeywords) {
+        this.contextualKeywords = contextualKeywords;
+    }
 }
