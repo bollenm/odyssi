@@ -15,7 +15,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.2.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
@@ -25,6 +25,9 @@
 	</properties>
 
 	<dependencies>
+
+		<!-- SPRINGBOOT -->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -35,6 +38,33 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Natural Language Processing -->
+		<dependency>
+			<groupId>edu.stanford.nlp</groupId>
+			<artifactId>stanford-corenlp</artifactId>
+			<version>3.7.0</version>
+		</dependency>
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>edu.stanford.nlp</groupId> -->
+<!-- 			<artifactId>stanford-corenlp</artifactId> -->
+<!-- 			<version>3.7.0</version> -->
+<!-- 			<classifier>models</classifier> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>edu.stanford.nlp</groupId>
+			<artifactId>stanford-corenlp</artifactId>
+			<version>3.7.0</version>
+			<classifier>models-french</classifier>
+		</dependency>
+<!-- <dependency> -->
+<!--     <groupId>edu.stanford.nlp</groupId> -->
+<!--     <artifactId>stanford-corenlp</artifactId> -->
+<!--     <version>3.7.0</version> -->
+<!--     <classifier>models-german</classifier> -->
+<!-- </dependency> -->
+
 	</dependencies>
 
 	<build>
