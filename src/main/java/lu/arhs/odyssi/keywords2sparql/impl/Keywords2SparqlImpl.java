@@ -48,7 +48,7 @@ public class Keywords2SparqlImpl implements Keywords2Sparql {
                 ret += constructSubjectQuery(keyword);
 
                 break;
-            case POSITION:
+            case LOCATION:
 
                 break;
             default:
