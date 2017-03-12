@@ -17,22 +17,23 @@ import lu.arhs.odyssi.keywords2sparql.Keywords2Sparql;
 @Component
 public class Keywords2SparqlImpl implements Keywords2Sparql {
 
+    final static private String SEARCHED_URI = "dataset_uri";
+
     @Override
     public SparqlQuery process(final SemanticQuery semanticQuery) {
         Validate.notNull(semanticQuery);
 
         final Collection<ContextualKeyword> contextualKeywords = semanticQuery.getContextualKeywords();
 
-        String where = "where {";
+        String where = "";
         for (final ContextualKeyword contextualKeyword : contextualKeywords) {
 
             where += createWhere(contextualKeyword);
 
         }
 
-        where += "}";
-
         SparqlQuery ret = new SparqlQuery();
+        ret.setSelect(SEARCHED_URI);
         ret.setWhere(where);
         return ret;
     }
@@ -48,7 +49,7 @@ public class Keywords2SparqlImpl implements Keywords2Sparql {
                 ret += constructSubjectQuery(keyword);
 
                 break;
-            case POSITION:
+            case LOCATION:
 
                 break;
             default:
@@ -60,36 +61,51 @@ public class Keywords2SparqlImpl implements Keywords2Sparql {
 
     private String constructSubjectQuery(final String keyword) {
         return "{" +
-                "       ?concept skos:prefLabel \"" + keyword + "\" ." +
-                "       ?dataset_id dct:concept ?concept." +
-                "} UNION {" +
-                "      ?concept skos:prefLabel \"" + keyword + "\" ." +
-                "      ?concept skos:altLabel ?altlabels " +
-                "      ?dataset_id dct:title ?dataset_title. " +
+                // Search with the altlabels in the title
+                "      ?dataset_uri dct:title ?dataset_title. " +
+                "      optional {" +
+                "           { ?concept skos:prefLabel \"" + keyword + "\" .}" +
+                "               union" +
+                "           {?concept skos:altLabel \"" + keyword + "\" .}" +
+                "       } " +
+                "      ?concept skos:altLabel ?altlabels ." +
                 "      FILTER regex(?dataset_title, ?altlabels, \"i\" ). " +
                 "} UNION {" +
-                "      ?concept skos:prefLabel \"" + keyword + "\" ." +
-                "      ?concept skos:altLabel ?altlabels " +
-                "      ?dataset_id dct:description ?dataset_description. " +
+                // Search with the preflabels in the title
+                "      ?dataset_uri dct:title ?dataset_title. " +
+                "      optional {" +
+                "           { ?concept skos:prefLabel \"" + keyword + "\" .}" +
+                "               union" +
+                "           {?concept skos:altLabel \"" + keyword + "\" .}" +
+                "       } " +
+                "      ?concept skos:prefLabel ?prefLabel ." +
+                "      FILTER regex(?dataset_title, ?prefLabel, \"i\" ). " +
+                "} UNION {" +
+                // Search with the altlabels in the description
+                "      ?dataset_uri dct:description ?dataset_description. " +
+                "      optional {" +
+                "           { ?concept skos:prefLabel \"" + keyword + "\" .}" +
+                "               union" +
+                "           {?concept skos:altLabel \"" + keyword + "\" .}" +
+                "       } " +
+                "      ?concept skos:altLabel ?altlabels ." +
                 "      FILTER regex(?dataset_description, ?altlabels, \"i\" ). " +
+                "} UNION {" +
+                // Search with the preflabels in the description
+                "      ?dataset_uri dct:description ?dataset_description. " +
+                "      optional {" +
+                "           { ?concept skos:prefLabel \"" + keyword + "\" .}" +
+                "               union" +
+                "           {?concept skos:altLabel \"" + keyword + "\" .}" +
+                "       } " +
+                "      ?concept skos:prefLabel ?prefLabel ." +
+                "      FILTER regex(?dataset_description, ?prefLabel, \"i\" ). " +
+
                 "}";
     }
 
     private String constructPositionQuery(final String keyword) {
-        return "{" +
-                "       ?concept skos:prefLabel \"" + keyword + "\" ." +
-                "       ?dataset_id dct:concept ?concept." +
-                "} UNION {" +
-                "      ?concept skos:prefLabel \"" + keyword + "\" ." +
-                "      ?concept skos:altLabel ?altlabels " +
-                "      ?dataset_id dct:title ?dataset_title. " +
-                "      FILTER regex(?labels, " + keyword + ", \"i\" ). " +
-                "} UNION {" +
-                "      ?concept skos:prefLabel \"" + keyword + "\" ." +
-                "      ?concept skos:altLabel ?altlabels " +
-                "      ?dataset_id dct:description ?dataset_title. " +
-                "      FILTER regex(?labels, " + keyword + ", \"i\" ). " +
-                "}";
+        return "";
     }
 
 }

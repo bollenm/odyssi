@@ -1,0 +1,25 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix eurovoc: <http://eurovoc.europa.eu/> .
+@prefix dataset:      <https://data.public.lu/en/datasets/> .
+
+eurovoc:1
+        a 				skos:Concept ;
+        skos:prefLabel 	"waste";
+        skos:altLabel 	"trash", "garbage".
+		
+eurovoc:2
+        a 				skos:Concept ;
+        skos:prefLabel 	"waste collection";
+        skos:altLabel 	"trash removal", "garbage collection".
+		
+dataset:waste-collection-luxembourg
+        a                dcat:Dataset;
+        dct:title        "Waste collection in the Grand-Duchy of Luxembourg" ;
+        dct:description  "The time and place of the waste collection in the Grand-Duchy of Luxembourg" .
+
+dataset:trash-removal-mamer
+        a                    dcat:Dataset;
+        dct:title        "Trash removal in the commune of Mamer" ;
+        dct:description  "The time and place of the waste collection in the commune of Mamer" .
