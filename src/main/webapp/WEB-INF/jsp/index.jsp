@@ -4,14 +4,23 @@
 
 
 <html>
-<head>
 
+
+<head>
+    <spring:url value="/js/bootstrap.css" var="bootstrapCss" />
+    <link rel="stylesheet" type="text/css" href="${bootstrapCss}">
 
 </head>
 <body>
 
 <spring:url value="/js/jquery-3.1.1.min.js" var="jqueryJs" />
 <script src="${jqueryJs}"></script>
+
+<spring:url value="/js/bootstrap.min.js" var="bootstrapJs"/>
+<script src="${bootstrapJs}"></script>
+
+
+
 <script>
     $(document).ready(function(){
         $("p").click(function(){
@@ -37,8 +46,8 @@
 
 </script>
 
-<h1>Speak to your data</h1>
-
+<h1 class="panel-heading">Speak to your data</h1>
+<div class="well">Speak to your data</div>
 <input id="txtQuery" type="text" name="">
 <button id="sendQuery">Send Query</button>
 
