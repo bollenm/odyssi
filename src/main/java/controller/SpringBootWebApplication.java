@@ -6,6 +6,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 
+import lu.arhs.odyssi.sparqlengine.SparqlEngine;
+import lu.arhs.odyssi.sparqlengine.impl.SparqlEngineImpl;
+
 @ComponentScan
 @SpringBootApplication
 public class SpringBootWebApplication extends SpringBootServletInitializer {
@@ -17,6 +20,7 @@ public class SpringBootWebApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(SpringBootWebApplication.class, args);
+        SparqlEngineImpl.prepareModel();
     }
 
 }

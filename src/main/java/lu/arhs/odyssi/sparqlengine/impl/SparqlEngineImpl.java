@@ -24,10 +24,10 @@ import lu.arhs.odyssi.sparqlengine.SparqlEngine;
  */
 public class SparqlEngineImpl implements SparqlEngine {
 
-    private String inputFileName = "src/main/resources/goc-example.ttl";
-    private Model model;
+    private static String inputFileName = "src/main/resources/goc-example.ttl";
+    private static Model model;
 
-    public void prepareModel() {
+    public static void prepareModel() {
         model = ModelFactory.createDefaultModel();
         model.read(inputFileName);
     }

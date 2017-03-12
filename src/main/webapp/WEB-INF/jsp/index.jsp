@@ -37,8 +37,9 @@
                 },
                 function(data, status){
                     var list = $("#results-list");
+                    list.empty();
                     for(var key in data){
-                        var element = "<li><a href=" + data[key]['uri'] + "> "+ data[key]['title'] +"</a>";
+                        var element = '<li class="list-group-item"><a href=' + data[key]['uri'] + '> '+ data[key]['title'] +'</a>';
                         list.append(element);
                     }
                 });
@@ -167,7 +168,8 @@
     <p>
 </div>
 <div id="results">
-    <ul id="results-list">
+    <h2>Results:</h2>
+    <ul id="results-list" class="list-group">
     </ul>
 </div>
 
