@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import lu.arhs.odyssi.core.ContextEnum;
 import lu.arhs.odyssi.core.ContextualKeyword;
+import lu.arhs.odyssi.core.Dataset;
 import lu.arhs.odyssi.core.SemanticQuery;
 import lu.arhs.odyssi.core.SparqlQuery;
 import lu.arhs.odyssi.keywords2sparql.Keywords2Sparql;
@@ -42,7 +43,8 @@ public class searchIT {
 
         final SparqlQuery sparqlQuery = keywords2Sparql.process(semanticQuery);
 
-        final Collection<String> res = sparqlEngine.process(sparqlQuery);
+        final Collection<String> uris = sparqlEngine.process(sparqlQuery);
 
+        final Collection<Dataset> datasets = sparqlEngine.findDataset(uris);
     }
 }

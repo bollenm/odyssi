@@ -12,9 +12,6 @@ import lu.arhs.odyssi.core.SemanticQuery;
 import lu.arhs.odyssi.core.SparqlQuery;
 import lu.arhs.odyssi.keywords2sparql.impl.Keywords2SparqlImpl;
 
-
-import static org.junit.Assert.*;
-
 /**
  * @author bollenma
  */
