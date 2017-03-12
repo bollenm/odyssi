@@ -27,7 +27,7 @@
             $(this).hide();
         });
         var nlpQuery="";
-        alert("hello")
+
         $("#sendQuery").click(function(){
             nlpQuery= $('#txtQuery').val();
             $.get("/query",
@@ -46,11 +46,12 @@
 
 </script>
 
-<h1 class="panel-heading">Speak to your data</h1>
-<div class="well">Speak to your data</div>
-<input id="txtQuery" type="text" name="">
-<button id="sendQuery">Send Query</button>
+<div class="jumbotron">
+    <h1 class ="display-3"> Speak to your Open Data</h1>
 
+<input class="form-control mr-sm-2" id="txtQuery" type="text" name="" placeholder="Speak...">
+<button class="btn btn-secondary" id="sendQuery">Send Query</button>
+</div>
 <style>
     * {
         font-family: Verdana, Arial, sans-serif;
@@ -84,7 +85,7 @@
         text-align: center;
     }
     .final {
-        color: black;
+        color: white;
         padding-right: 3px;
     }
     .interim {
@@ -133,8 +134,7 @@
 
 
 <h1 class="center" id="headline">
-    <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
-        Web Speech API</a> Demonstration</h1>
+
 <div id="info">
     <p id="info_start">Click on the microphone icon and begin speaking.</p>
     <p id="info_speak_now">Speak now.</p>
@@ -155,7 +155,7 @@
 </div>
 <div class="right">
     <button id="start_button" onclick="startButton(event)">
-        <img id="start_img" src="mic.gif" alt="Start"></button>
+        <img id="start_img" src="mic.gif" alt=""></button>
 </div>
 <div id="results">
     <span id="final_span" class="final"></span>
