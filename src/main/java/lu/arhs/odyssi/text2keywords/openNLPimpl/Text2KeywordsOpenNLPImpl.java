@@ -18,9 +18,7 @@ import edu.stanford.nlp.pipeline.Annotation;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
-@Service
 public class Text2KeywordsOpenNLPImpl implements Text2Keywords {
 
     private static final Logger LOG = LoggerFactory.getLogger(Text2KeywordsOpenNLPImpl.class);

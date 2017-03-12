@@ -36,6 +36,11 @@
 
                 },
                 function(data, status){
+                    var list = $("#results-list");
+                    for(var key in data){
+                        var element = "<li><a href=" + data[key]['uri'] + "> "+ data[key]['title'] +"</a>";
+                        list.append(element);
+                    }
                 });
         });
 
@@ -161,7 +166,12 @@
     <span id="interim_span" class="interim"></span>
     <p>
 </div>
-<div class="center">
+<div id="results">
+    <ul id="results-list">
+    </ul>
+</div>
+
+<div class="center" style="display:none">
     <div class="sidebyside" style="text-align:right">
         <button id="copy_button" class="button" onclick="copyButton()">
             Copy and Paste</button>
